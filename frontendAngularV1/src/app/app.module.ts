@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatCardModule} from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +30,9 @@ import { ProductService } from './services/product/product.service';
     HttpClientModule,
     MatBadgeModule,
     MatCardModule,
-    MatIconModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     this.ps.getAllProducts().subscribe(res => {
       this.products = res;
       this.productIndex = Array.from( { length: res.length }, (_,k) => k + 1 );
-
+      /*
       var productNames = res.map(x=>x.name);
       var productImages = res.map(x=>x.imageURL);
       var productPrices = res.map(x=>x.price);
@@ -49,7 +49,13 @@ export class ProductsComponent implements OnInit {
         pPriceElement.innerHTML = productPrices[i].toString();
         document.getElementsByTagName('mat-card-content')[i].appendChild(pPriceElement);
       });
+      */
     });
+  }
+
+  searchProducts(event: Event) {
+    const searchValue = (event.target as HTMLInputElement).value;
+    console.log(searchValue);
   }
 
   addToCart() {
