@@ -1,0 +1,85 @@
+<div class="container px-2 py-2">
+    <div class="row justify-content-around">
+        <div class="col-2 me-3">
+            <div class="row">
+                <mat-card class="mt-5">
+                    <ul type="none">
+                        <strong>Color</strong>
+                        <li>
+                            <input type="checkbox" name="red"/> Red
+                        </li>
+                        <li>
+                            <input type="checkbox" name="blue"/> Blue
+                        </li>
+                        <li>
+                            <input type="checkbox" name="green"/> Green
+                        </li>
+                    </ul>
+
+                    <ul type="none">
+                        <strong>Gender</strong>
+                        <li>
+                            <input type="checkbox" name="men"/> Men
+                        </li>
+                        <li>
+                            <input type="checkbox" name="women"/> Women
+                        </li>
+                    </ul>
+
+                    <ul type="none">
+                        <strong>Price</strong>
+                        <li>
+                            <input type="checkbox" name="lt250"/> Rs 0-250
+                        </li>
+                        <li>
+                            <input type="checkbox" name="gt250lt450"/> Rs 251-450
+                        </li>
+                        <li>
+                            <input type="checkbox" name="gt450"/> Rs 450
+                        </li>
+                    </ul>
+
+                    <ul type="none">
+                        <strong>Type</strong>
+                        <li>
+                            <input type="checkbox" name="polo"/> Polo
+                        </li>
+                        <li>
+                            <input type="checkbox" name="hoodie"/> Hoodie
+                        </li>
+                        <li>
+                            <input type="checkbox" name="basic"/> Basic
+                        </li>
+                    </ul>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="col-9 ms-3 main">
+            <div class="row">
+                <form class="d-flex col-10 m-2" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search for products" aria-label="Search">
+                    <button class="btn btn-secondary" type="submit"><mat-icon>search</mat-icon></button>
+                </form>
+            </div>
+
+            <div class="row card-group">
+                <mat-card class="col-3 m-3 p-4 list-group-item" *ngFor="let product of products">
+                    <mat-card-header>
+                        <mat-card-title>{{ product.name }}</mat-card-title>
+                    </mat-card-header>
+                    <img/>
+                    <img mat-card-image [src]="product.imageURL" [alt]="product.name" />
+                    <div class="row align-items-center justify-content-around">
+                        <mat-card-content class="col-auto">
+                            <h5 class="col-auto">{{ product.price }}</h5>
+                        </mat-card-content>
+                        <mat-card-actions class="col-auto">
+                            <button mat-raised-button class="btn btn-primary">Add to cart</button>
+                        </mat-card-actions>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

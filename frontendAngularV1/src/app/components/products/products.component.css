@@ -1,0 +1,9 @@
+.list-group-item {
+    width: 29%;
+}
+
+.card-group {
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
