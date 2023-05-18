@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
 import { Product } from 'src/app/interfaces/product/product';
 import { ProductService } from 'src/app/services/product/product.service';
 
@@ -10,6 +11,10 @@ import { ProductService } from 'src/app/services/product/product.service';
 
 export class ProductsComponent implements OnInit {
 
+  filter: boolean = false;
+
+  filteredProducts: any[] = [];
+
   products: Product[] = [];
 
   productIndex: number[] = [];
@@ -18,13 +23,14 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.retrieveAllProducts();
+    document.body.style.backgroundColor = "lightblue";
   }
 
   retrieveAllProducts() {
-    this.ps.getAllProducts().subscribe(res => {
+    this.ps.getAllProducts().pipe(take(1)).subscribe(res => {
       this.products = res;
-      this.productIndex = Array.from( { length: res.length }, (_,k) => k + 1 );
       /*
+      this.productIndex = Array.from( { length: res.length }, (_,k) => k + 1 );
       var productNames = res.map(x=>x.name);
       var productImages = res.map(x=>x.imageURL);
       var productPrices = res.map(x=>x.price);
@@ -53,9 +59,13 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  searchProducts(event: Event) {
-    const searchValue = (event.target as HTMLInputElement).value;
-    console.log(searchValue);
+  searchProductTerm(event: Event) {
+    this.filter = false;
+    this.filteredProducts = this.products.filter(term => term.name.toLowerCase().includes((event.target as HTMLInputElement).value.toLowerCase()));
+  }
+
+  searchProduct() {
+    this.filter = true;
   }
 
   addToCart() {

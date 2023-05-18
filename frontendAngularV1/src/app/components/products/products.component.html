@@ -58,13 +58,31 @@
         <div class="col-9 ms-3 main">
             <div class="row">
                 <div class="d-flex col-10 m-2">
-                    <input matInput class="form-control me-2" placeholder="Search for products" (keyup)="searchProducts($event)"/>
-                    <button class="btn btn-secondary" (click)="searchProducts($event)"><mat-icon>search</mat-icon></button>
+                    <input matInput class="form-control me-2" placeholder="Search for products" (keyup)="searchProductTerm($event)"/>
+                    <button class="btn btn-secondary" (click)="searchProduct()"><mat-icon>search</mat-icon></button>
                 </div>
             </div>
 
-            <div class="row card-group">
+            <div class="row card-group bg-light" *ngIf="!filter">
                 <mat-card class="col-3 m-3 p-4 list-group-item" *ngFor="let product of products">
+                    <mat-card-header>
+                        <mat-card-title>{{ product.name }}</mat-card-title>
+                    </mat-card-header>
+                    <img/>
+                    <img mat-card-image [src]="product.imageURL" [alt]="product.name" />
+                    <div class="row align-items-center justify-content-around">
+                        <mat-card-content class="col-auto">
+                            <h5 class="col-auto">{{ product.price }}</h5>
+                        </mat-card-content>
+                        <mat-card-actions class="col-auto">
+                            <button mat-raised-button class="btn btn-primary">Add to cart</button>
+                        </mat-card-actions>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div class="row card-group bg-light" *ngIf="filter">
+                <mat-card class="col-3 m-3 p-4 list-group-item" *ngFor="let product of filteredProducts">
                     <mat-card-header>
                         <mat-card-title>{{ product.name }}</mat-card-title>
                     </mat-card-header>
