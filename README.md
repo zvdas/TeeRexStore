@@ -16,3 +16,5 @@ A simple Angular webapp, which allows a customer to do the following:
 - View the shopping cart by clicking the shopping cart icon
 - Increase quantity or delete items from the shopping cart
 - Display the total amount in the shopping cart
+
+**Note: This is a Take-home assignment from a hiring process.**
